@@ -8,7 +8,7 @@ Created on Thu Mar 31 22:59:47 2022
 
 #import tkinter as tk
 import sys
-sys.path.insert(1,'/home/secke/projet_API/Model')
+sys.path.append('/home/secke/Bureau/Projet_API/Model')
 #from model import *
 import model
 #mon_ob=model.address()

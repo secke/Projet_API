@@ -6,14 +6,14 @@ Created on Thu Mar 31 21:02:36 2022
 @author: secke
 """
 import sys
-sys.path.insert(1,'/home/secke/projet_API/Controller')
-import contoller
+sys.path.insert(1,'/home/secke/Bureau/Projet_API/Controller')
+import controller
 
 
 
 class voir():
     def __init__(self):
-        self.obj=contoller.afficher()
+        self.obj=controller.afficher()
         #self.ob_User=contoller.
         #self.ob_Addres=contoller.afficher()
         #self.ob_Addres=contoller.afficher()
