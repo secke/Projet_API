@@ -6,7 +6,7 @@ Created on Thu Mar 31 21:02:36 2022
 @author: secke
 """
 import sys
-sys.path.insert(1,'/home/secke/Bureau/Projet_API/Controller')
+sys.path.append('/home/secke/Bureau/Projet_API/Controller')
 import controller
 
 
