@@ -18,11 +18,11 @@ reponse=requests.get(lien)
 f=reponse.json()
 ###################################################
 
-######## data ADDRESS #############
+####################### CLASS ADDRESS #############
 addr=[]
 for s in f:
     addr.append(s['address'])
-###################################
+##################################################
 class address():
     def __init__(self):
         self.conext=pymysql.connect(user='root',password='secke2022',host='localhost',database='API_db')
@@ -54,7 +54,7 @@ class address():
 ob=address()
 
 
-######## data USER #############
+###################### CLASS USER ######################################""
 util=[]
 for r in f:
     util.append((r['phone'],r['name'],r['username'],r['email']))
@@ -84,6 +84,13 @@ class user():
             self.stylo.execute("insert into user (idAdd, phone, name, username, email) values (%s,%s,%s,%s,%s)",  (j[0],j[1],j[2],j[3],j[4]))
         #return self.utill
         
+    def supprimer(self,idt):
+        self.stylo.execute("delete from user where id=%s",
+                           (idt,))
+        return self.conext.commit()
+    
+
+
     def avr(self):
         self.stylo.execute("select * from user")
         return self.stylo.fetchall()
@@ -125,6 +132,11 @@ class company():
         self.stylo.execute("select * from company")
         return self.stylo.fetchall()
     
+    def supprimer(self,idt):
+        self.stylo.execute("delete from company where id=%s",
+                           (idt,))
+        return self.conext.commit()
+    
     
     def valide(self):
         self.connext.commit()
@@ -147,32 +159,26 @@ class post():
         self.connex=pymysql.connect(user='root',password='secke2022',host='localhost',database='API_db')
         self.stylo=self.connex.cursor()
     def ajout(self):
-        #self.donnee=[]
-        #self.recup=[]
-        #self.stylo.execute("select id, name from user")
-        #for i in self.stylo.fetchall():
-         #   self.recup.append(i)
+ 
         
         for j in f_p:
-            #if self.recup[1]==util[1]:
-            #for v in range(len(util)):
-             #   if self.recup[v][1]==util[v][1]:
-                    #self.iduser=self.recup[v][0]
-              #      self.donnee.append((self.recup[v][0],j['title'],j['body']))
+
              self.stylo.execute("insert into post (idUser,title,body) values (%s,%s,%s)",
                                  (j['userId'],j['title'],j['body']))
-        #for k in self.donnee:
-            #self.stylo.execute("insert into post (idUser,title,body) values (%s,%s,%s)",
-             #                  (k[0],k[1],k[2]))
+
         
     def obtenir(self):
         self.stylo.execute("select * from post")
         return self.stylo.fetchall()
     
-    def cinq(self):
-        self.stylo.execute("select * from post limit 5")
-        return self.stylo.fetchall()
+    #def cinq(self):
+     #   self.stylo.execute("select * from post limit 5")
+      #  return self.stylo.fetchall()
     
+    def supprimer(self,idt):
+        self.stylo.execute("delete from post where id=%s",
+                           (idt,))
+        return self.conext.commit()
     def valider(self):
         self.connex.commit()
 
@@ -191,24 +197,19 @@ class comments():
         self.stylo=self.connex.cursor()
     
     def ajout(self):
-        #self.donnee=[]
-        #self.recup=[]
-        #self.stylo.execute("select id, title from post")
-        #for i in self.stylo.fetchall():
-         #   self.recup.append(i)
+
         for j in f_c:
-          #  for el in range(len(f_p)):
-           #     if self.recup[el][1]==f_p[el]['title']:
-            #        self.donnee.append((self.recup[el][0],j['name'],j['email'],j['body']))
+
             self.stylo.execute("insert into comments (idPost,name,email,body) values(%s,%s,%s,%s)",
                                (j['postId'],j['name'],j['email'],j['body']))
-        #for k in self.donnee:
-           # self.stylo.execute("insert into comments (idPost,name,email,body) values(%s,%s,%s,%s)",
-            #                   (k[0],k[1],k[2],k[3]))
+
     def obtenir(self):
         self.stylo.execute("select * from comments")
         return self.stylo.fetchall()
-    
+    def supprimer(self,idt):
+        self.stylo.execute("delete from comments where id=%s",
+                           (idt,))
+        return self.conext.commit()
     
     def valider(self):
         self.connex.commit()
@@ -227,27 +228,19 @@ class todos():
         self.connex=pymysql.connect(user='root',password='secke2022',host='localhost',database='API_db')
         self.stylo=self.connex.cursor()
     def ajout(self):
-        #self.donnee=[]
-        #self.recup=[]
-        #self.stylo.execute("select id,phone from user")
-        #for i in self.stylo.fetchall():
-         #   self.recup.append(i)
-        #for j in range(len(f_t)):
-         #   for el in range(len(self.recup)):
-          #      if self.recup[el][1]==util[el][0]:
-                    #iduser=self.recup[0]
-           #         self.donnee.append((self.recup[el][0],f_t[j]['title']))
+        
         for elemt in f_t:
             self.stylo.execute("insert into todos (idUser,title) values (%s,%s)", 
                                (elemt['userId'],elemt['title']))
-        #for k in self.donnee:
-           # self.stylo.execute("insert into todos (idUser,title) values (%s,%s)", 
-            #                   (k[0],k[1]))
+
     def obtenir(self):
         self.stylo.execute("select * from todos")
         return self.stylo.fetchall()
     
-    
+    def supprimer(self,idt):
+        self.stylo.execute("delete from todos where id=%s",
+                           (idt,))
+        return self.conext.commit()
     
     def valider(self):
         self.connex.commit()
@@ -266,26 +259,20 @@ class albums():
         self.connex=pymysql.connect(user='root',password='secke2022',host='localhost',database='API_db')
         self.stylo=self.connex.cursor()
     def ajout(self):
-        #self.donnee=[]
-        #self.recup=[]
-        #self.stylo.execute("select id, name from user")
-        #for i in self.stylo.fetchall():
-         #   self.recup.append(i)
+
         for j in f_alb:
-            #for el in range(len(util)):
-             #   if self.recup[el][1]==util[el][1]:
-              #      iduser=self.recup[el][0]
-               # self.donnee.append((iduser,j['title']))
+
             self.stylo.execute("insert into albums (idUser,title) values (%s,%s)", 
                                (j['userId'],j['title']))
-        #for k in self.donnee:
-         #   self.stylo.execute("insert into albums (idUser,title) values (%s,%s)", 
-          #                     (k[0],k[1]))
+
     def obtenir(self):
         self.stylo.execute("select * from albums")
         return self.stylo.fetchall()
    
-    
+    def supprimer(self,idt):
+        self.stylo.execute("delete from albums where id=%s",
+                           (idt,))
+        return self.conext.commit()
     
     def valider(self):
         self.connex.commit()
@@ -313,7 +300,10 @@ class photos():
         self.stylo.execute("select * from photos")
         return self.stylo.fetchall()
    
-    
+    def supprimer(self,idt):
+        self.stylo.execute("delete from photos where id=%s",
+                           (idt,))
+        return self.conext.commit()
     
     def valider(self):
         self.connex.commit()

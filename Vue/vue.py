@@ -6,21 +6,16 @@ Created on Thu Mar 31 21:02:36 2022
 @author: secke
 """
 import sys
-sys.path.append('/home/secke/Bureau/Projet_API/Controller')
-import controller
+sys.path.append('.')
+sys.path.append('..')
+import Controller.controller as controller
 
 
 
 class voir():
     def __init__(self):
         self.obj=controller.afficher()
-        #self.ob_User=contoller.
-        #self.ob_Addres=contoller.afficher()
-        #self.ob_Addres=contoller.afficher()
-        #self.ob_Addres=contoller.afficher()
-        #self.ob_Addres=contoller.afficher()
-        #self.ob_Addres=contoller.afficher()
-        #self.ob_Addres=contoller.afficher()
+
     def voirAddres(self):
         self.vr=self.obj.avoirAddres()
         return self.vr
@@ -45,7 +40,34 @@ class voir():
     def voirPhotos(self):
         self.vr=self.obj.avoirPhotos()
         return self.vr
-    
+class supprimer():
+    def __init__(self):
+        self.obj=controller.supprimer()
+
+    def supAddres(self):
+        self.sup=self.obj.suppAddres()
+        return self.sup
+    def supUser(self):
+        self.sup=self.obj.suppUser()
+        return self.sup
+    def supCompany(self):
+        self.sup=self.obj.suppCompany()
+        return self.sup
+    def supPost(self):
+        self.sup=self.obj.suppPost()
+        return self.sup
+    def supComments(self):
+        self.sup=self.obj.suppComments
+        return self.sup
+    def supTodos(self):
+        self.sup=self.obj.suppTodos
+        return self.sup
+    def supAlbums(self):
+        self.sup=self.obj.suppAlbums()
+        return self.sup
+    def supPhotos(self):
+        self.sup=self.obj.suppPhotos
+        return self.sup
     
 
     
