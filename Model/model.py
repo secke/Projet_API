@@ -51,7 +51,7 @@ class address():
     def valider(self):
         self.conext.commit()
       
-ob=address()
+#ob=address()
 
 
 ###################### CLASS USER ######################################""
@@ -104,7 +104,7 @@ class user():
     
     def valid(self):
         self.connex.commit()
-ss=user()
+#ss=user()
 
 
 ########################### CLASS COMPANY ################################
@@ -142,7 +142,7 @@ class company():
         self.connext.commit()
 
 
-dd=company()
+#dd=company()
 
 
 
@@ -183,7 +183,7 @@ class post():
         self.connex.commit()
 
 
-ff=post()
+#ff=post()
 
 ########################### CLASS COMMENTS ################################
 lien_c="https://jsonplaceholder.typicode.com/comments"
@@ -214,7 +214,7 @@ class comments():
     def valider(self):
         self.connex.commit()
 
-gg=comments()
+#gg=comments()
 
 
 ############################# CLASS TODOS ######################################
@@ -246,7 +246,7 @@ class todos():
         self.connex.commit()
         
 
-hh=todos()
+#hh=todos()
 
 ############################### CLASS ALBUMS #######################################
 lien_alb="https://jsonplaceholder.typicode.com/albums"
@@ -278,7 +278,7 @@ class albums():
         self.connex.commit()
 
 
-jj=albums()
+#jj=albums()
 
 
 ############################### CLASS PHOTOS #######################################
@@ -309,4 +309,4 @@ class photos():
         self.connex.commit()
 
 
-ll=photos()
+#ll=photos()
